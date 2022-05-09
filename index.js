@@ -49,13 +49,22 @@ async function run() {
         res.send(result);
     });
 
+    app.get('/myitem', async(req, res) => {
+        const email = req.query.email;
+        const query = {email: email};
+        const cursor = itemCollection.find(query);
+        const myitem = await cursor.toArray();
+        res.send(myitem);
+    })
+
     // DELETE
     app.delete('/item/:id', async(req, res) =>{
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
         const result = await itemCollection.deleteOne(query);
         res.send(result);
-    })
+    });
+
 
 
   } finally {
