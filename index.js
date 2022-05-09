@@ -17,12 +17,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   console.log("Car Dealer DB Connected")
-//   // perform actions on the collection object
-//   client.close();
-// });
 
 async function run() {
   try {
@@ -85,6 +79,7 @@ run().catch(console.dir);
 app.get("/", (req, res) => {
   res.send("Running Car Dealer Server");
 });
+
 
 app.listen(port, () => {
   console.log("Listening to port", port);
